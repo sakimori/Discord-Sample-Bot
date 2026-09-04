@@ -6,7 +6,7 @@ import keep_alive
 
 load_dotenv()
 
-TOKEN = os.getenv("TOKEN")
+TOKEN = os.getenv("BOT_TOKEN")
 IS_KOYEB = os.getenv("KOYEB_INSTANCE_ID") is not None
 
 
@@ -18,11 +18,10 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user.name} (ID: {bot.user.id})')
-    print('------')
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('Pong!')
+@bot.command(name="ヌルポ")
+async def nullpo(ctx):
+    await ctx.send("ガッ")
 
 if IS_KOYEB:
     keep_alive.keep_alive()
