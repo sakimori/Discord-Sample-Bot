@@ -7,7 +7,7 @@ import keep_alive
 load_dotenv()
 
 TOKEN = os.getenv("BOT_TOKEN")
-IS_KOYEB = os.getenv("KOYEB_INSTANCE_ID") is not None
+NEED_KEEP_ALIVE = os.getenv("NEED_KEEP_ALIVE", "false").lower() == "true"
 
 
 intents = discord.Intents.default()
@@ -23,13 +23,7 @@ async def on_ready():
 async def nullpo(ctx):
     await ctx.send("ガッ")
 
-if IS_KOYEB:
+if NEED_KEEP_ALIVE:
     keep_alive.keep_alive()
 
-try:
-    bot.run(TOKEN)
-except Exception:
-    if IS_KOYEB:
-        os.system("kill 1")
-    else:
-        raise
+bot.run(TOKEN)
