@@ -1,10 +1,10 @@
-# Discord bot on Koyeb
+# Discord bot
 
-KoyebでDiscord botを動かすための最低限の機能のみのサンプルです．
+Koyeb,NorthflankでDiscord botを動かすための最低限の機能のみのサンプルです．
 
 ## 環境
 - Python
 - Flask
-- Koyeb
+- Koyeb or NorthFlank
 - dicord.py
 
