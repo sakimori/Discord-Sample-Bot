@@ -1,8 +1,8 @@
-# Discord bot
+# Discord Bot
 
-python製のDiscord botをクラウド環境で常時動かすための最低限の機能のみのサンプルです．
+Python製のDiscord Botをクラウド環境で常時動かすための最低限の機能のみのサンプルです．
 
-DockerFileを利用できるホスティングサービスでの稼働を想定しており，koyeb,Northflankで動作確認済みです．
+Dockerfileを利用できるホスティングサービスでの稼働を想定しており，Koyeb,Northflankで動作確認済みです．
 
 ## 環境
 - Python
@@ -13,12 +13,13 @@ DockerFileを利用できるホスティングサービスでの稼働を想定�
 ## 特徴
 - discord.pyを利用したDiscord Bot
 - `!ヌルポ`→`ガッ`というコマンド
-- FlaskによるHTTP通信が可能
+- FlaskによるHTTPエンドポイントを提供
 - Dockerによる実行環境の構築
 - 環境変数によってローカル/クラウド環境の切り替え可能
-- botのトークンを環境変数として扱うことため安全
+- Botのトークンをコードに直接記述せず，環境変数として管理
 
 ## ディレクトリ
+```
 .
 ├── app/                # BotのPythonファイルをまとめるディレクトリ
 │ ├── main.py           # Bot本体
@@ -29,15 +30,16 @@ DockerFileを利用できるホスティングサービスでの稼働を想定�
 ├── .gitignore          # Gitの追跡対象から除外するファイルを指定
 ├── LICENSE             # ライセンス
 └── README.md           # このファイル
+```
 
 ## 環境変数
 ローカル環境で開発する際には，`.env.example`をコピーして，`.env`ファイルを作成してください
 
-- BOT_TOKEN
-Dicord Developer Portalで取得したBot Tokenを設定してください．
+### BOT_TOKEN
+Discord Developer Portalで取得したBot Tokenを設定してください．
 Bot Tokenは秘密情報のため，GitHub，クラウド環境などに公開しないよう注意してください．
 
-- LOCAL_MODE
+### LOCAL_MODE
 `false`の場合，FlaskのHTTPサーバを起動します．
 ローカルで実行する場合には`true`に設定してください．
 ローカル環境でBotをテストするなどに利用できます．
@@ -63,3 +65,6 @@ Botが参加しているサーバで
 と返信されれば，正常に動作しています．
 
 ## クラウド環境での利用
+プロジェクトをGitHubにアップロードして，各ホスティングサービスで，リポジトリをリンクさせることで利用できます．
+ホスティングサービスで，シークレット環境変数にBot Tokenを設定することで，Botをクラウドで運用できます．
+間違っても，通常の環境変数にBot Tokenを登録して公開しないよう注意してください！！
