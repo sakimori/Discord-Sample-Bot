@@ -9,6 +9,9 @@ load_dotenv()
 TOKEN = os.getenv("BOT_TOKEN")
 LOCAL_MODE = os.getenv("LOCAL_MODE", "false").lower() == "true"
 
+if TOKEN is None:
+    raise RuntimeError("Bot Token is not set")
+
 intents = discord.Intents.default()
 intents.message_content = True
 
